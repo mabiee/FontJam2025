@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://xdeu1tldrqh8"]
+
+[ext_resource type="Script" path="res://Scripts/target.gd" id="1_ucd2k"]
+[ext_resource type="Texture2D" uid="uid://d0ui2ktup1gba" path="res://Images/orb.png" id="2_33oo8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_71vim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1xo1"]
+size = Vector2(20, 35)
+
+[node name="target" type="Node2D"]
+script = ExtResource("1_ucd2k")
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="."]
+modulate = Color(0.411765, 1, 1, 1)
+material = SubResource("CanvasItemMaterial_71vim")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_33oo8")
+
+[node name="target area" type="Area2D" parent="."]
+
+[node name="target collision shape" type="CollisionShape2D" parent="target area"]
+shape = SubResource("RectangleShape2D_j1xo1")

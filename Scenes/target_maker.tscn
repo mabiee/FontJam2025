@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://0wnpcv5i7j6h"]
+
+[ext_resource type="Script" path="res://Scripts/target_maker.gd" id="1_22dek"]
+[ext_resource type="PackedScene" uid="uid://xdeu1tldrqh8" path="res://Scenes/target.tscn" id="2_24ckl"]
+
+[node name="target_maker" type="Node2D"]
+script = ExtResource("1_22dek")
+target_tscn = ExtResource("2_24ckl")

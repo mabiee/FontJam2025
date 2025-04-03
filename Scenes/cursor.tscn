@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccwakl5fd5woa"]
+
+[ext_resource type="Script" path="res://Scripts/cursor.gd" id="1_guu6a"]
+[ext_resource type="Texture2D" uid="uid://crg68rjr28e3s" path="res://Images/cursor.png" id="2_ucnt8"]
+[ext_resource type="Script" path="res://Scripts/perfect_area.gd" id="3_662di"]
+[ext_resource type="Script" path="res://Scripts/good_area.gd" id="4_ap4o1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyp3m"]
+size = Vector2(5, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sg6u"]
+size = Vector2(50, 35)
+
+[node name="cursor" type="Node2D"]
+position = Vector2(0, 100)
+script = ExtResource("1_guu6a")
+metadata/_edit_group_ = true
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_ucnt8")
+
+[node name="perfect area" type="Area2D" parent="."]
+script = ExtResource("3_662di")
+
+[node name="perfect collision shape" type="CollisionShape2D" parent="perfect area"]
+shape = SubResource("RectangleShape2D_iyp3m")
+
+[node name="perfect timer" type="Timer" parent="perfect area"]
+one_shot = true
+
+[node name="good area" type="Area2D" parent="."]
+script = ExtResource("4_ap4o1")
+
+[node name="good collision shape" type="CollisionShape2D" parent="good area"]
+shape = SubResource("RectangleShape2D_4sg6u")
+
+[node name="good timer" type="Timer" parent="good area"]
+one_shot = true
+
+[connection signal="area_entered" from="perfect area" to="perfect area" method="perfect_area_entered"]
+[connection signal="area_entered" from="good area" to="good area" method="good_area_entered"]

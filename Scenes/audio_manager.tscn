@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://fn2y21e737ab"]
+
+[ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="1_em80j"]
+[ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_lprxt"]
+[ext_resource type="PackedScene" uid="uid://bdvkdv77fslji" path="res://addons/midi/ADSR.tscn" id="2_3cnbm"]
+[ext_resource type="PackedScene" uid="uid://kgw5rd0os1ws" path="res://Scenes/dots_manager.tscn" id="2_aa5a3"]
+
+[node name="audio_manager" type="Node2D"]
+script = ExtResource("1_lprxt")
+dots_manager_tscn = ExtResource("2_aa5a3")
+
+[node name="MidiPlayer" type="Node" parent="."]
+script = ExtResource("1_em80j")
+file = "res://Sounds/METAL THEME.mid"
+playing = true
+soundfont = "res://soundfonts/fatal_fury_1.sf2"
+
+[node name="ADSR" parent="." instance=ExtResource("2_3cnbm")]
+autoplay = true
+
+[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_event"]
